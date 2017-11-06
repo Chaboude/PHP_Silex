@@ -1,0 +1,37 @@
+<h2>Formulaire d'ajout d'ordinateur</h2>
+
+{% if pc is defined %}
+<form method="post" name="formulaire" action="{{ url('pcs.save', {id: pc.id}) }}">
+
+    <input type="hidden" name="id" value={{pc.id}} />
+
+    <label for="version">Version : </label>
+    <input type="text" name="version" value={{pc.version}}  />
+
+    <label for="marque">Marque : </label>
+    <input type="text" name="marque" value={{pc.marque}}  />
+
+    <label for="age">Age : </label>
+    <input type="text" name="age" value={{pc.age}}  />
+
+    <label for="idproprietaire">ID Propriétaire : </label>
+    <input type="text" name="idproprietaire" value={{pc.idproprietaire}}  />
+    {% else %}
+    <form method="post" name="formulaire" action="{{ url('pcs.save') }}">
+
+    <label for="version">Version : </label>
+    <input type="text" name="version" />
+
+    <label for="marque">Marque : </label>
+    <input type="text" name="marque" />
+
+    <label for="age">Age : </label>
+    <input type="text" name="age" />
+
+    <label for="idproprietaire">ID Propriétaire : </label>
+    <input type="text" name="idproprietaire" />
+{% endif %}
+
+    <button type="submit">Envoyer</button>
+
+</form>

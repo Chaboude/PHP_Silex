@@ -1,0 +1,37 @@
+<h1>Liste des PCs</h1>
+<form method="get" name="formulaire" action="{{ url('pcs.new') }}">
+  <button type="submit">Ajouter</button>
+</form>
+<table>
+<thead>
+  <tr>
+    <th>ID</th>
+    <th>VERSION</th>
+    <th>MARQUE</th>
+    <th>AGE</th>
+    <th>USER ID</th>
+    <th>ACTION</th>
+  </tr>
+</thead>
+<tbdoy>
+{% for pc in pcs %}
+   <tr>
+     <td>{{pc.getId}}</td>
+     <td>{{pc.getVersion}}</td>
+     <td>{{pc.getMarque}}</td>
+     <td>{{pc.getAge}}</td>
+     <td>{{pc.getIdProprietaire}}</td>
+     <td>
+       <form method="post" name="formulaire" action="{{ url('pcs.delete', {id: pc.getId}) }}">
+            <button type="submit">Supprimer</button>
+        </form>
+      </td>
+      <td>
+        <form method="get" name="formulaire" action="{{ url('pcs.edit', {id: pc.getId}) }}">
+          <button type="submit">Modifier</button>
+        </form>
+      </td>
+   </tr>
+{% endfor %}
+</tbdoy>
+</table>
